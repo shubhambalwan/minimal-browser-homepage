@@ -2,7 +2,8 @@
     --bg: #111111;
     --surface: #1c1c1c;
     --border: #333333;
-    --border-focus: #666666;
+    --border-focus: #8a8a8a;
+    --glow: rgba(255, 255, 255, 0.22);
     --text: #ffffff;
     --muted: #777777;
     --font: "Iosevka", ui-monospace, "SF Mono", Consolas, monospace;
@@ -51,10 +52,13 @@ input {
     border-radius: 0;
     outline: none;
 
+    /* hides the blinking text caret; the glow shows when the box is active */
+    caret-color: transparent;
+
     font-family: inherit;
     font-size: 18px;
 
-    /* removes the default rounded look and clear button on Safari/Chrome */
+    
     appearance: none;
     -webkit-appearance: none;
 
@@ -65,9 +69,15 @@ input::-webkit-search-cancel-button {
     -webkit-appearance: none;
 }
 
-input:focus-visible {
+/* resting state */
+input:not(:focus) {
+    box-shadow: none;
+}
+
+/* active state */
+input:focus {
     border-color: var(--border-focus);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 20px 2px var(--glow);
 }
 
 input::placeholder {
