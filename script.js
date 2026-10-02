@@ -1,16 +1,33 @@
 // search box
 const searchBox = document.getElementById("search");
+const searchForm = searchBox.closest("form");
 
-searchBox.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-        const query = searchBox.value.trim();
-
-        if (query !== "") {
-            window.location.href =
-                "https://www.google.com/search?q=" +
-                encodeURIComponent(query);
-        }
+// Trim whitespace and block empty searches before the form submits
+searchForm.addEventListener("submit", (event) => {
+    searchBox.value = searchBox.value.trim();
+    if (searchBox.value === "") {
+        event.preventDefault();
     }
 });
 
-// events
+// shortcuts
+document.addEventListener("keydown", (event) => {
+    const typing = document.activeElement === searchBox;
+
+    // "/" focuses the search box from anywhere
+    if (event.key === "/" && !typing) {
+        event.preventDefault();
+        searchBox.focus();
+    }
+
+    // Escape clears the box
+    if (event.key === "Escape" && typing) {
+        searchBox.value = "";
+    }
+});
+
+// empty search when returning with the browser back button
+window.addEventListener("pageshow", () => {
+    searchBox.value = "";
+    searchBox.focus();
+});

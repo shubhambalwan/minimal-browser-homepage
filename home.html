@@ -3,21 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- search box -->
-    <div class="search-container">
-        <input
-            type="text"
-            id="search"
-            placeholder="Search..."
-            autocomplete="on"
-            autofocus
-        >
-    </div>
-    
+    <main>
+        <!-- Works even without JavaScript: Enter submits the form -->
+        <form class="search-container" action="https://www.google.com/search" method="get" role="search">
+            <input
+                type="search"
+                id="search"
+                name="q"
+                placeholder="Search..."
+                aria-label="Search"
+                autocomplete="on"
+                spellcheck="false"
+                required
+                autofocus
+            >
+        </form>
+    </main>
 
     <script src="script.js"></script>
 </body>
