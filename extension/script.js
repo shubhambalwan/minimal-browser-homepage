@@ -330,7 +330,6 @@ function removeItem(kind, item, li) {
 }
 
 function renderAll() {
-    // $("crumb").textContent = pathOf(state.sel);
     renderTree();
     renderTasks();
     renderNotes();
@@ -394,11 +393,16 @@ document.addEventListener("keydown", (e) => {
     if (!active && e.key.length === 1) searchBox.focus();
 });
 
-window.addEventListener("pageshow", () => {
-    searchBox.value = "";
-    if (!active) searchBox.focus();
-});
+function focusSearch() {
+    if (!active && document.visibilityState === "visible") {
+        searchBox.focus({ preventScroll: true });
+    }
+}
 
-// init
-renderAll();
-show(null);
+if (location.search !== "?focus") {
+    location.search = "?focus";
+} else {
+    window.addEventListener("DOMContentLoaded", () => {
+        searchBox.focus();
+    });
+}
