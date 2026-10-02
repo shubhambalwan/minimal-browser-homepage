@@ -9,7 +9,7 @@
     --text: #f2f2f2;
     --muted: #7c7c7c;
     --warn: #e0a458;
-    --font: "Iosevka", ui-monospace, "SF Mono", Consolas, monospace;
+    --font: "Iosevka", ui-monospace, "SF Mono", Consolas, monospace; /*sabse tagda font*/
     --s1: 8px; --s2: 16px; --s3: 24px;
     --radius: 0px;
     --box-h: 55px;
@@ -45,7 +45,7 @@ body {
 h2 { margin: 0; font-size: 13px; font-weight: 600; color: var(--muted); }
 button { font: inherit; color: inherit; cursor: pointer; }
 
-/* ---------- stage + search ---------- */
+/* search box  ki css*/
 .stage {
     height: 100dvh;
     display: flex;
@@ -87,7 +87,7 @@ input:focus, textarea:focus { border-color: var(--border-focus); box-shadow: 0 0
     caret-color: transparent;
 }
 
-/* ---------- workspace shell ---------- */
+/* workspace ki css*/
 .workspace {
     flex: 1;
     min-height: 0;
@@ -126,7 +126,7 @@ body.ws-open .app {
 .side { border-radius: var(--radius) 0 0 var(--radius); padding: var(--s2) var(--s1); }
 .main { border-left: 0; border-radius: 0 var(--radius) var(--radius) 0; }
 
-/* ---------- sidebar: folders ---------- */
+/* sidebar and folder management */
 .side-head { display: flex; align-items: center; justify-content: space-between; padding: 0 var(--s1) var(--s1); }
 .icon-btn, .remove {
     background: none; border: 0; color: var(--muted); line-height: 1;
@@ -152,7 +152,7 @@ body.ws-open .app {
 .t-row:hover .icon-btn, .t-row:focus-within .icon-btn { display: block; }
 .t-row:hover .count, .t-row:focus-within .count { display: none; }
 
-/* ---------- main: tabs + views ---------- */
+
 .main-head { flex: none; display: flex; align-items: center; justify-content: space-between; gap: var(--s2); padding: 0 var(--s3); border-bottom: 1px solid var(--border); }
 .tabs { position: relative; display: flex; }
 .tabs::after {
@@ -185,7 +185,7 @@ body.ws-open .app {
 @keyframes item-in { from { opacity: 0; transform: translateY(6px); } }
 .empty { margin: var(--s2) 0; text-align: center; color: var(--muted); font-size: 14px; }
 
-/* ---------- tasks ---------- */
+/*  tasks ka section */
 .add-bar { flex: none; display: flex; gap: var(--s1); margin-bottom: var(--s2); }
 .add-bar #task-input { flex: 1; min-width: 0; height: 46px; padding: 0 14px; font-size: 15px; }
 .add-bar #task-due { flex: none; width: 150px; height: 46px; padding: 0 12px; font-size: 13px; color: var(--muted); }
@@ -214,7 +214,7 @@ body.ws-open .app {
 .show-done { flex: none; align-self: flex-start; padding: 10px 0 14px; background: none; border: 0; color: var(--muted); font-size: 13px; }
 .show-done:hover, .show-done:focus-visible { color: var(--text); outline: none; }
 
-/* ---------- notes ---------- */
+/* notes ka section */
 .add-row {
     flex: none;
     display: block;
@@ -247,7 +247,7 @@ body.ws-open .app {
 .note-text { display: block; width: 100%; min-height: 64px; padding: 0; background: none; border: 0; border-radius: 0; font-size: 14px; line-height: 1.5; resize: none; overflow: hidden; }
 .note-text:focus { border: 0; box-shadow: none; }
 
-/* ---------- small screens ---------- */
+/* choti screens */
 @media (max-width: 720px) {
     :root { --tab-w: 100px; }
     .app { grid-template-columns: 1fr; grid-template-rows: minmax(0, 32%) minmax(0, 1fr); height: min(640px, 100%); }

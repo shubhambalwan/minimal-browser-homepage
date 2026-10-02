@@ -14,9 +14,10 @@
                    autocomplete="on" spellcheck="false" required autofocus>
         </form>
 
-        <!-- Alt+T opens Tasks, Alt+N opens Notes, pressing the other key switches -->
+        <!-- notes and todo/task list -->
         <section id="workspace" class="workspace" data-view="tasks" aria-label="Tasks and notes" aria-hidden="true" inert>
             <div class="app">
+                <!-- folder management -->
                 <nav class="side" aria-label="Folders">
                     <div class="side-head">
                         <h2>Folders</h2>
@@ -35,8 +36,8 @@
                         </div>
                         <span id="crumb" class="crumb"></span>
                     </header>
-
                     <div class="views">
+                        <!-- tasks -->
                         <div id="view-tasks" class="view" role="tabpanel">
                             <form id="task-form" class="add-bar" autocomplete="off">
                                 <input id="task-input" type="text" maxlength="200" placeholder="Add a task" aria-label="New task">
@@ -46,7 +47,7 @@
                             <ul id="task-list" class="items tasks"></ul>
                             <button id="show-done" class="show-done" type="button" hidden></button>
                         </div>
-
+                        <!-- notes -->
                         <div id="view-notes" class="view" role="tabpanel">
                             <button id="add-note" class="add-row" type="button">+ New note</button>
                             <!-- <p id="note-empty" class="empty">No notes in this folder yet.</p> -->

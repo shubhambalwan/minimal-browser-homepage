@@ -1,12 +1,13 @@
-// ---------- config: Alt + key opens a site (add your own) ----------
-// Alt+T = Tasks and Alt+N = Notes are reserved for the workspace.
+
+// websites ke shortcuts
 const SITES = [
     { key: "Y", label: "youtube.com", url: "https://youtube.com" },
     { key: "G", label: "github.com", url: "https://github.com" },
 ];
 
+//
 const KEY = "home.workspace.v4";
-const OLD_KEYS = ["home.workspace.v3", "home.workspace.v2", "home.workspace.v1"]; // read once for migration
+const OLD_KEYS = ["home.workspace.v3", "home.workspace.v2", "home.workspace.v1"];
 
 const $ = (id) => document.getElementById(id);
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
@@ -28,13 +29,13 @@ const noteList = $("note-list");
 const showDoneBtn = $("show-done");
 const views = { tasks: $("view-tasks"), notes: $("view-notes") };
 
-// ---------- search ----------
+// search box
 searchBox.closest("form").addEventListener("submit", (e) => {
     searchBox.value = searchBox.value.trim();
     if (!searchBox.value) e.preventDefault();
 });
 
-// ---------- data (localStorage; migrates v1-v3) ----------
+// task, notes storage systummmm
 function normalize(d) {
     const items = (k) =>
         (Array.isArray(d?.[k]) ? d[k] : [])
@@ -51,7 +52,7 @@ function normalize(d) {
     const ids = new Set(s.nodes.map((n) => n.id));
     s.nodes.forEach((n) => { if (!ids.has(n.parent) || n.parent === n.id) n.parent = null; });
 
-    // items without a valid folder go into "General"
+    // items without a valid, general me jaenge
     const orphans = [...s.tasks, ...s.notes].filter((i) => !ids.has(i.node));
     if (orphans.length) {
         const general = { id: uid(), name: "General", parent: null, open: true };
@@ -93,8 +94,8 @@ function today() {
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
-// ---------- folders ----------
-let addParent = null; // folder the next new folder goes into (null = top level)
+// folder management (not hotel management)
+let addParent = null; 
 
 function folder(node) {
     const kids = childrenOf(node.id);
@@ -197,7 +198,7 @@ folderInput.addEventListener("keydown", (e) => {
     }
 });
 
-// ---------- tasks ----------
+// tasks functionaliy
 function renderTasks(newId) {
     const mine = state.tasks.filter((t) => t.node === state.sel);
     const open = mine.filter((t) => !t.done).sort((a, b) => (a.due || "9999").localeCompare(b.due || "9999"));
@@ -224,7 +225,7 @@ function makeTask(t, isNew) {
         t.done = check.checked;
         li.classList.toggle("done", t.done);
         save();
-        setTimeout(() => { renderTasks(); renderTree(); }, 450); // completed tasks tuck away after a beat
+        setTimeout(() => { renderTasks(); renderTree(); }, 450); // completed tasks tuck away
     });
 
     const title = el("input", "t-title");
@@ -272,7 +273,7 @@ taskInput.addEventListener("keydown", (e) => {
 });
 showDoneBtn.addEventListener("click", () => { state.showDone = !state.showDone; save(); renderTasks(); });
 
-// ---------- notes (several per folder, edited in place, saved as you type) ----------
+// notes fucntionality
 function autosize(ta) {
     ta.style.height = "auto";
     ta.style.height = `${ta.scrollHeight}px`;
@@ -325,7 +326,7 @@ function removeItem(kind, item, li) {
     state[kind] = state[kind].filter((x) => x.id !== item.id);
     save();
     li.classList.add("leaving");
-    setTimeout(() => { renderTasks(); renderNotes(); renderTree(); }, 240); // let the exit animation finish
+    setTimeout(() => { renderTasks(); renderNotes(); renderTree(); }, 240); 
 }
 
 function renderAll() {
@@ -335,8 +336,8 @@ function renderAll() {
     renderNotes();
 }
 
-// ---------- workspace: Alt+T = Tasks, Alt+N = Notes, the other key switches ----------
-let active = null; // null | "tasks" | "notes"
+
+let active = null;
 
 function show(view) {
     const changedView = view && view !== state.view;
@@ -362,7 +363,7 @@ const toggle = (view) => show(active === view ? null : view);
 
 document.querySelectorAll(".tab").forEach((b) => b.addEventListener("click", () => show(b.dataset.view)));
 
-// ---------- global keyboard ----------
+// keyboard (mechanical nahi h)
 document.addEventListener("keydown", (e) => {
     const a = document.activeElement;
     const inSearch = a === searchBox;
@@ -386,10 +387,10 @@ document.addEventListener("keydown", (e) => {
 
     if (inField || e.ctrlKey || e.metaKey) return;
 
-    // "/" focuses the search box without typing the slash
+    // slash daba ke likhenge toh searchbox me likha jaega
     if (e.key === "/") { e.preventDefault(); searchBox.focus(); return; }
 
-    // With nothing open, any printable key lands in the search box
+    // keyboard me kuch bhi dabenge toh search box me aaega
     if (!active && e.key.length === 1) searchBox.focus();
 });
 
@@ -398,6 +399,6 @@ window.addEventListener("pageshow", () => {
     if (!active) searchBox.focus();
 });
 
-// ---------- init ----------
+// init
 renderAll();
 show(null);
