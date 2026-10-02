@@ -11,7 +11,7 @@
     --warn: #e0a458;
     --font: "Iosevka", ui-monospace, "SF Mono", Consolas, monospace;
     --s1: 8px; --s2: 16px; --s3: 24px;
-    --radius: 10px;
+    --radius: 0px;
     --box-h: 55px;
     --pad-top: 32px;
     --tab-w: 132px;
@@ -223,8 +223,8 @@ body.ws-open .app {
     padding: 12px 14px;
 
     background: var(--surface);
-    border: 1px dashed var(--border);
-    border-radius: 8px;
+    border: 0px dashed var(--border);
+    border-radius: 0px;
 
     color: var(--muted);
     font-size: 14px;
