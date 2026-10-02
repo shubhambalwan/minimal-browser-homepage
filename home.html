@@ -8,21 +8,44 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main>
-        <!-- Search Box -->
+    <!-- Alt+S -->
+    <aside id="shortcuts" class="shortcuts" tabindex="-1" aria-label="Keyboard shortcuts" aria-hidden="true" inert>
+        <h2>Shortcuts</h2>
+        <ul id="shortcut-list"></ul>
+    </aside>
+
+    <main class="stage">
         <form class="search-container" action="https://www.google.com/search" method="get" role="search">
-            <input
-                type="search"
-                id="search"
-                name="q"
-                placeholder="Search..."
-                aria-label="Search"
-                autocomplete="on"
-                spellcheck="false"
-                required
-                autofocus
-            >
+            <input type="search" id="search" name="q" placeholder="Search..." aria-label="Search"
+                   autocomplete="on" spellcheck="false" required autofocus>
         </form>
+
+        <!-- Alt+T -->
+        <section id="workspace" class="workspace" aria-label="Tasks and notes" aria-hidden="true" inert>
+            <div class="app">
+                <nav class="side" aria-label="Categories">
+                    <div class="side-head">
+                        <h2>Categories</h2>
+                        <button id="add-cat" class="icon-btn" type="button" aria-label="Add category">+</button>
+                    </div>
+                    <input id="cat-input" class="cat-input" hidden maxlength="24" autocomplete="off"
+                           placeholder="New category" aria-label="New category name">
+                    <ul id="cat-list"></ul>
+                </nav>
+                <section class="main">
+                    <header class="main-head">
+                        <h2 id="cat-title"></h2>
+                        <div class="tabs" role="group" aria-label="View">
+                            <button type="button" data-mode="tasks">Tasks</button>
+                            <button type="button" data-mode="notes">Notes</button>
+                        </div>
+                    </header>
+                    <textarea id="field" class="field" rows="1" aria-label="Add item"></textarea>
+                    <ul id="items" class="items"></ul>
+                    <p id="empty" class="empty" hidden></p>
+                </section>
+            </div>
+        </section>
     </main>
 
     <script src="script.js"></script>
