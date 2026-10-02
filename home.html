@@ -8,41 +8,51 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Alt+S -->
-    <aside id="shortcuts" class="shortcuts" tabindex="-1" aria-label="Keyboard shortcuts" aria-hidden="true" inert>
-        <h2>Shortcuts</h2>
-        <ul id="shortcut-list"></ul>
-    </aside>
-
     <main class="stage">
         <form class="search-container" action="https://www.google.com/search" method="get" role="search">
             <input type="search" id="search" name="q" placeholder="Search..." aria-label="Search"
                    autocomplete="on" spellcheck="false" required autofocus>
         </form>
 
-        <!-- Alt+T -->
-        <section id="workspace" class="workspace" aria-label="Tasks and notes" aria-hidden="true" inert>
+        <!-- Alt+T opens Tasks, Alt+N opens Notes, pressing the other key switches -->
+        <section id="workspace" class="workspace" data-view="tasks" aria-label="Tasks and notes" aria-hidden="true" inert>
             <div class="app">
-                <nav class="side" aria-label="Categories">
+                <nav class="side" aria-label="Folders">
                     <div class="side-head">
-                        <h2>Categories</h2>
-                        <button id="add-cat" class="icon-btn" type="button" aria-label="Add category">+</button>
+                        <h2>Folders</h2>
+                        <button id="add-folder" class="icon-btn" type="button" aria-label="Add folder">+</button>
                     </div>
-                    <input id="cat-input" class="cat-input" hidden maxlength="24" autocomplete="off"
-                           placeholder="New category" aria-label="New category name">
-                    <ul id="cat-list"></ul>
+                    <input id="folder-input" class="folder-input" hidden maxlength="24" autocomplete="off"
+                           placeholder="New folder" aria-label="New folder name">
+                    <ul id="tree" class="tree"></ul>
                 </nav>
+
                 <section class="main">
                     <header class="main-head">
-                        <h2 id="cat-title"></h2>
-                        <div class="tabs" role="group" aria-label="View">
-                            <button type="button" data-mode="tasks">Tasks</button>
-                            <button type="button" data-mode="notes">Notes</button>
+                        <div class="tabs" role="tablist">
+                            <button class="tab" role="tab" type="button" data-view="tasks" aria-controls="view-tasks">Tasks</button>
+                            <button class="tab" role="tab" type="button" data-view="notes" aria-controls="view-notes">Notes</button>
                         </div>
+                        <span id="crumb" class="crumb"></span>
                     </header>
-                    <textarea id="field" class="field" rows="1" aria-label="Add item"></textarea>
-                    <ul id="items" class="items"></ul>
-                    <p id="empty" class="empty" hidden></p>
+
+                    <div class="views">
+                        <div id="view-tasks" class="view" role="tabpanel">
+                            <form id="task-form" class="add-bar" autocomplete="off">
+                                <input id="task-input" type="text" maxlength="200" placeholder="Add a task" aria-label="New task">
+                                <input id="task-due" type="date" aria-label="Deadline">
+                            </form>
+                            <!-- <p id="task-empty" class="empty">Nothing to do in this folder.</p> -->
+                            <ul id="task-list" class="items tasks"></ul>
+                            <button id="show-done" class="show-done" type="button" hidden></button>
+                        </div>
+
+                        <div id="view-notes" class="view" role="tabpanel">
+                            <button id="add-note" class="add-row" type="button">+ New note</button>
+                            <!-- <p id="note-empty" class="empty">No notes in this folder yet.</p> -->
+                            <ul id="note-list" class="items notes"></ul>
+                        </div>
+                    </div>
                 </section>
             </div>
         </section>
