@@ -1,3 +1,4 @@
+// search box
 const searchBox = document.getElementById("search");
 
 searchBox.addEventListener("keydown", function (event) {
@@ -11,3 +12,5 @@ searchBox.addEventListener("keydown", function (event) {
         }
     }
 });
+
+// events

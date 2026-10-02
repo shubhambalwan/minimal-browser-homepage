@@ -1,5 +1,11 @@
 * {
     box-sizing: border-box;
+    font-family: "Iosevka", monospace;
+}
+
+html {
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: none;
 }
 
 body {
@@ -10,8 +16,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    font-family: Arial, sans-serif;
 }
 
 .search-container {
@@ -28,20 +32,23 @@ input {
     background: #1c1c1c;
     color: white;
 
-    border: 1px solid #333;
-    border-radius: 10px;
+    border: 1px solid #333333;
+    border-radius: 0;
 
     outline: none;
+
+    font-family: "Iosevka", monospace;
     font-size: 18px;
 
     transition: 0.2s ease;
 }
 
 input:focus {
-    border-color: #666;
+    border-color: #666666;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
 }
 
 input::placeholder {
-    color: #777;
+    color: #777777;
+    font-family: "Iosevka", monospace;
 }
