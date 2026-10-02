@@ -2,6 +2,20 @@
 
 A minimal, keyboard-focused browser homepage with a lightweight workspace for managing **tasks, notes**.
 
+## Previews
+
+### Homepage
+![Search](./previews/1.png)
+
+### Search
+![Search input](./previews/2.png)
+
+### Tasks
+![Tasks](./previews/3.png)
+
+### Notes
+![Notes](./previews/4.png)
+
 ## Features
 
 - **Alt + T** — Open Tasks
