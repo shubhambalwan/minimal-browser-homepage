@@ -47,4 +47,4 @@ const SITES = [
 
 ## License
 
-Free to use and modify for personal projects.
+Free to use and modify.
