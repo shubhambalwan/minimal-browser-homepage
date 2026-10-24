@@ -13,7 +13,17 @@ A minimal browser homepage with Google search, search suggestions, and customiza
 
 You can also start typing anywhere on the page to focus the search bar.
 
-## Customize Shortcuts
+## Customizations
+
+### Customize Cursor
+
+Open style.css and find the Cursor Visibility.
+
+To hide the blinking cursor, comment this line:
+
+`#search:focus { border-color: var(--border-focus); caret-color: var(--text); }`
+
+### Customize Shortcuts
 
 Open `script.js` and find the `SITES` array at the top:
 
