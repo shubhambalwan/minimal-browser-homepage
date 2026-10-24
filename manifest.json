@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Minimal Browser Homepage",
+  "version": "1.2",
+  "description": "A Minimal Browser Homepage.",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "host_permissions": [
+    "https://suggestqueries.google.com/*"
+  ]
+}
