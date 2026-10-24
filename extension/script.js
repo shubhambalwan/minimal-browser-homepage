@@ -1,3 +1,16 @@
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+// Alt + key shortcuts
+const SITES = [
+    { key: "Y", url: "https://youtube.com" },
+    { key: "G", url: "https://github.com" },
+    // { key: "M", url: "https://mail.google.com" },
+];
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
 const searchBox = document.getElementById("search");
 const searchForm = document.getElementById("search-form");
 const suggestionBox = document.getElementById("suggestions");
@@ -126,16 +139,6 @@ if (location.search !== "?focus") {
 } else {
     window.addEventListener("DOMContentLoaded", () => searchBox.focus());
 }
-
-
-
-
-// Alt + key shortcuts
-const SITES = [
-    { key: "Y", url: "https://youtube.com" },
-    { key: "G", url: "https://github.com" },
-    // { key: "M", url: "https://mail.google.com" },
-];
 
 document.addEventListener("keydown", (e) => {
     if (!e.altKey || e.ctrlKey || e.metaKey) return;
