@@ -15,7 +15,7 @@ You can also start typing anywhere on the page to focus the search bar.
 
 ## Customize Shortcuts
 
-Open `script.js` and find the `SITES` array near the bottom:
+Open `script.js` and find the `SITES` array at the top:
 
 ```js
 const SITES = [
