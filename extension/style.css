@@ -60,7 +60,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* ------------------------------ */
 /* Cursor Visibility */
-/* to make cursor invisible un-comment this */
+/* to make cursor invisible comment this */
 #search:focus { border-color: var(--border-focus); caret-color: var(--text); }
 /* ------------------------------ */
 
