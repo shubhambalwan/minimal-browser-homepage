@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class = "stage">
+    <form class = "search-container" id = "search-form" role = "search" autocomplete="off">
+        <div class="search-wrap">
+                <!-- search box -->
+                <input type="search" id="search" name="q" placeholder="Search..." aria-label="Search..."
+                       autocomplete="off" spellcheck="false" required autofocus aria-controls="suggestions" aria-expanded="false" aria-autocomplete="list">
+                <!-- clear -->
+                <button class="search-clear" id="search-clear" type="button" aria-label="Clear search" hidden>×</button>
+                <!-- suggestions -->
+                <div id="suggestions" class="suggestions" role="listbox" aria-label="Search suggestions" hidden></div>
+            </div>               
+    <!-- </form> -->
+  </main>
+  <!-- script -->
+  <script src="script.js"></script>
+</body>
+</html>
