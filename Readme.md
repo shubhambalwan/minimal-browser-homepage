@@ -50,7 +50,7 @@ Use a single uppercase letter for `key` and the website's URL for `url`. Save th
 2. Open `chrome://extensions` in your Chromium-based browser.
 3. Enable **Developer mode**.
 4. Click **Load unpacked**.
-5. Select the project folder containing `manifest.json`.
+5. Select the project folder containing `manifest.json` or the `extension folder`.
 6. Open a new tab to use your homepage.
 
 To apply changes after editing files, click the **Reload** icon on the extension's card.
