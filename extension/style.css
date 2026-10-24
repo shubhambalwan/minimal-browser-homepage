@@ -57,7 +57,12 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 #search::placeholder { color: var(--muted); }
 #search::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+/* ------------------------------ */
+/* Cursor Visibility */
+/* to make cursor invisible un-comment this */
 #search:focus { border-color: var(--border-focus); caret-color: var(--text); }
+/* ------------------------------ */
 
 .search-clear {
     position: absolute;
