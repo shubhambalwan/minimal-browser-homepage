@@ -7,9 +7,14 @@ A minimal browser homepage with Google search, search suggestions, configurable 
 
 ## Screenshots
 
-| Homepage | Search Suggestions | Search Alias |
-|---|---|---|
-| ![Minimal Homepage](preview/homepage.png) | ![Search Suggestions](preview/search_suggestions.png) | ![Alias](preview/alias.png) |
+| Homepage |
+|---|
+| ![Minimal Homepage](preview/homepage.png) | 
+| Search Suggestions | 
+|![Search Suggestions](preview/search_suggestions.png) |
+|Search Alias |
+| ![Alias](preview/alias.png) |
+
 
 
 ## Keyboard Shortcuts
