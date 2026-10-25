@@ -2,6 +2,16 @@
 
 A minimal browser homepage with Google search, search suggestions, configurable search aliases, and customizable keyboard shortcuts.
 
+## Preview
+
+
+## Screenshots
+
+| Homepage | Search Suggestions | Search Alias |
+|---|---|---|
+| ![Minimal Homepage](preview/homepage.png) | ![Search Suggestions](preview/search-suggestions.png) | ![Alias](preview/alias.png) |
+
+
 ## Keyboard Shortcuts
 
 | Shortcut | Action |
