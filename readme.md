@@ -1,6 +1,6 @@
 # Minimal Browser Homepage
 
-A minimal browser homepage with Google search, search suggestions, configurable search aliases, and customizable keyboard shortcuts.
+A minimal, customizable browser homepage available as a Chrome extension and a standalone website. Features include Google search, search suggestions, configurable search aliases, customizable keyboard shortcuts, and a modular plugin system.
 
 ## Preview
 
@@ -149,14 +149,25 @@ example = plugins/example/example.js
 
 The plugin loader imports enabled modules and calls their exported `init()` function.
 
-### Plugin Development Tips
+### Plugin Development
 
 - Keep each feature in its own folder.
-- Keep user-editable settings in a separate `.conf` file when practical.
-- Use `chrome.runtime.getURL()` when fetching files packaged with the extension.
+- Store user-editable settings in separate `.conf` files when practical.
+- Use `chrome.runtime.getURL()` to fetch files packaged with the browser extension. For cross-environment compatibility, use conditional resource loading:
+
+  ```javascript
+  const response = await fetch(
+      typeof chrome !== "undefined" &&
+      chrome.runtime &&
+      typeof chrome.runtime.getURL === "function"
+          ? chrome.runtime.getURL(CONFIG_PATH)
+          : new URL(CONFIG_PATH, document.baseURI).href
+  );
+  ```
+
 - Handle missing configuration files and invalid settings gracefully.
 - Avoid modifying core homepage files when a feature can be implemented as a plugin.
-- Reload the extension after making changes.
+- Reload the extension after making changes. For website changes, refresh the page or redeploy if necessary.
 
 ## Project Structure
 
