@@ -1,3 +1,4 @@
+
 const searchBox = document.getElementById("search");
 const searchForm = document.getElementById("search-form");
 const suggestionBox = document.getElementById("suggestions");
@@ -7,6 +8,20 @@ let suggestionItems = [];
 let selectedSuggestion = -1;
 let suggestionRequest = 0;
 let suggestionTimer = null;
+
+// to make plugin work on website
+function getResourceURL(path) {
+    if (
+        typeof chrome !== "undefined" &&
+        chrome.runtime &&
+        typeof chrome.runtime.getURL === "function"
+    ) {
+        return chrome.runtime.getURL(path);
+    }
+
+    return new URL(path, document.baseURI).href;
+}
+
 
 // search
 
@@ -247,7 +262,7 @@ if (location.search !== "?focus") {
 async function loadPlugins() {
     try {
         const response = await fetch(
-            chrome.runtime.getURL("plugins/plugins.conf")
+            getResourceURL("plugins/plugins.conf")
         );
 
         if (!response.ok) {
@@ -283,7 +298,7 @@ async function loadPlugins() {
 
         for (const plugin of plugins) {
             try {
-                const pluginUrl = chrome.runtime.getURL(plugin.entry);
+                const pluginUrl = getResourceURL(plugin.entry);
                 const module = await import(pluginUrl);
 
                 if (typeof module.init === "function") {

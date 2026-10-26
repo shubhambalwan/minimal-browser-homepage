@@ -3,7 +3,13 @@ const PLACEHOLDER = "{searchTerms}";
 const ORIGIN = /^https?:\/\/[^/?#]+/;
 
 async function loadAliases() {
-    const response = await fetch(chrome.runtime.getURL(CONFIG_PATH));
+    const response = await fetch(
+    typeof chrome !== "undefined" &&
+    chrome.runtime &&
+    typeof chrome.runtime.getURL === "function"
+        ? chrome.runtime.getURL(CONFIG_PATH)
+        : new URL(CONFIG_PATH, document.baseURI).href
+    );
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     const aliases = new Map();

@@ -1,7 +1,13 @@
 const CONFIG_PATH = "plugins/shortcuts/shortcuts.conf";
 
 async function loadShortcuts() {
-    const response = await fetch(chrome.runtime.getURL(CONFIG_PATH));
+    const response = await fetch(
+    typeof chrome !== "undefined" &&
+    chrome.runtime &&
+    typeof chrome.runtime.getURL === "function"
+        ? chrome.runtime.getURL(CONFIG_PATH)
+        : new URL(CONFIG_PATH, document.baseURI).href
+    );
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     const shortcuts = new Map();
